@@ -1,0 +1,35 @@
+-- CLIENT SIDE --
+
+1. User GET /auth/signup
+
+-- SERVER SIDE --
+
+2. Validate token.
+3. If token is valid, redirect to '/study' with 302
+4. Otherwise, return login.html static view
+
+-- CLIENT SIDE --
+
+5. User submits signup form
+6. Onsubmit runs a JS function which POSTs JSON to /auth/login. This JSON has username, password, and confirmPassword
+
+-- SERVER SIDE --
+
+7. Turn the username, password and confirmPassword into strings.
+8. Check if username is blank. If yes return 400, 'Username cannot be blank'.
+9. Check if password is blank. If yes return 400, 'Password cannot be blank'.
+10. Check if confirmPassword is blank. If yes return 400, 'Confirm password cannot be blank'.
+11. Check if password = confirmPassword. If no return 400, 'Passwords do not match'.
+12. Check if username already exists. If yes return 400, 'Username already exists'.
+13. Generate user_id for user
+14. Hash password with salt. Save hash, username, salt, and user_id
+15. Set cookie 'token' that stores JWT with id and time issued. Cookie must be Samesite and secure
+16. Return 200, 'Success'
+
+-- CLIENT SIDE --
+17. If 400 and 'Username cannot be blank', display 'Please enter a username.'
+18. If 400 and 'Password cannot be blank', display 'Please enter a password.'
+19. If 400 and 'Confirm password cannot be blank', display 'Please reenter your password.'
+20. If 400 and 'Passwords do not match', display 'The two passwords you typed are not the same. Please retype your password.'
+21. If 400 and 'Username already exists', display 'Please choose a different username.'
+22. If 200, redirect to '/study'. Use replace(), so that users can't accidentally go back onto the signup screen and think they have to signup again
