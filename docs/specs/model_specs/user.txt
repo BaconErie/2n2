@@ -7,6 +7,6 @@ Attributes:
 - username, string
 - password, string: Hashed with salt
 - salt, string
-- created_study_guides, list of StudyGuides: A list of StudyGuide objects that the user has created
-- recently_studied, list of StudyGuides: A list of StudyGuide objecs that the user has recently studied, max length 6
+- study_guide_set, list of StudyGuides: A list of StudyGuide objects that the user has created. Note that Django will create this for us.
+- recently_studied, list of int: A list of integers which represent StudyGuide ids. 
 - date_created, int: UTC Unix timestamp of when the user was created
