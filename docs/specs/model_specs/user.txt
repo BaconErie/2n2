@@ -3,7 +3,7 @@ USER MODEL
 This model represents a user.
 
 Attributes:
-- user_id, string
+- id, int
 - username, string
 - password, string: Hashed with salt
 - salt, string

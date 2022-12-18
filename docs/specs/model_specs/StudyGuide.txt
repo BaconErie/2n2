@@ -3,7 +3,7 @@ StudyGuide model
 Represents a study guide
 
 Attributes:
-- id, str
+- id, int
 - creator, User object
 - date_created, int: Unix timestamp
 - last_updated, int: Unix timestamp
