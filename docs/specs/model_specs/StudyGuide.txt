@@ -1,0 +1,11 @@
+StudyGuide model
+
+Represents a study guide
+
+Attributes:
+- id, str
+- creator, User object
+- date_created, int: Unix timestamp
+- last_updated, int: Unix timestamp
+- questions, list of QAQuestion and FormulaQuestion objects
+- public, boolean: If true, anyone with link can access. If false, only creator can access
