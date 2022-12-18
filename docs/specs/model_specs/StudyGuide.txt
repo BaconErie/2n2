@@ -7,5 +7,5 @@ Attributes:
 - creator, User object
 - date_created, int: Unix timestamp
 - last_updated, int: Unix timestamp
-- questions, list of QAQuestion and FormulaQuestion objects
+- question_set, list of QAQuestion and FormulaQuestion objects. Note that Django will create this attribute for us
 - public, boolean: If true, anyone with link can access. If false, only creator can access
