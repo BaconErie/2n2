@@ -16,18 +16,18 @@ class QAReference(models.Model):
 
 class QAQuestion(models.Model):
     content = models.TextField()
-    reference_qa = models.ForeignKey(QAReference, on_delete=CASCADE)
+    reference_qa = models.ForeignKey(QAReference, on_delete=models.CASCADE)
 
 class QAAnswer(models.Model):
     content = models.TextField()
-    reference_qa = models.ForeignKey(QAReference, on_delete=CASCADE)
+    reference_qa = models.ForeignKey(QAReference, on_delete=models.CASCADE)
 
 
 
 class FormulaQuestion(models.Model):
-    study_guide = models.ForeignKey(StudyGuide, on_delete=CASCADE)
+    study_guide = models.ForeignKey(StudyGuide, on_delete=models.CASCADE)
     formula_string = models.TextField()
 
 class FormulaTemplate(models.Model):
-    question = models.ForeignKey(FormulaQuestion, on_delete=CASCADE)
+    question = models.ForeignKey(FormulaQuestion, on_delete=models.CASCADE)
     template_string = models.TextField()
