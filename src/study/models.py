@@ -31,3 +31,33 @@ class FormulaQuestion(models.Model):
 class FormulaTemplate(models.Model):
     question = models.ForeignKey(FormulaQuestion, on_delete=models.CASCADE)
     template_string = models.TextField()
+
+
+
+class StudyProgress(models.Model):
+    '''Keeps track of how many times a user has gotten a question correct'''
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    qa_question = models.ForeignKey(QAReference, on_delete=models.CASCADE)
+    formula_question = models.ForeignKey(FormulaQuestion, on_delete=models.CASCADE)
+    question_type = models.CharField(max_length=200)
+    times_correct = models.IntegerField(default=0)
+
+    @property
+    def question(self):
+        if self.question_type == 'QAReference':
+            return self.qa_question
+        
+        elif self.question_type == 'FormulaQuestion':
+            return self.formula_question
+    
+    @question.setter
+    def question(self, new_question):
+        self.question_type = type(new_question).__name__
+
+        if self.question_type == 'QAReference':
+            self.qa_question = new_question
+            self.formula_question = None
+        
+        elif self.question_type == 'FormulaQuestion':
+            self.formula_question = new_question
+            self.qa_question = None
