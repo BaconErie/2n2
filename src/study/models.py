@@ -7,6 +7,8 @@ class StudyGuide(models.Model):
     last_updated = models.DateTimeField()
     public = models.BooleanField(default=False)
 
+
+
 class QAReference(models.Model):
     # This class keeps track of the many questions and answers a Q&A question may have
     # We can't just use a many to many relationship because we want to know which questions are part of the same Q&A Question
@@ -19,3 +21,5 @@ class QAQuestion(models.Model):
 class QAAnswer(models.Model):
     content = models.TextField()
     reference_qa = models.ForeignKey(QAReference, on_delete=CASCADE)
+
+
