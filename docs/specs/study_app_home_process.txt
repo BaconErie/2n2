@@ -1,0 +1,6 @@
+STUDY APP HOME PAGE PROCESS
+
+The client uses the /study URL to interact with the home page
+
+IF THE CLIENT IS LOGGED IN:
+- 

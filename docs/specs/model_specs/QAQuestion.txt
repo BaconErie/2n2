@@ -1,0 +1,9 @@
+QAQuestion model
+
+Represents a Question and Answer or multiple choice question
+
+Attributes:
+- id, str
+- questions, list of string: Contains question strings. Must be at least length of 1
+- correct_answers, list of string: Must be of length 1
+- incorrect_answers, list of string: Can be empty
