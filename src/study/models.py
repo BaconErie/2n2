@@ -23,3 +23,11 @@ class QAAnswer(models.Model):
     reference_qa = models.ForeignKey(QAReference, on_delete=CASCADE)
 
 
+
+class FormulaQuestion(models.Model):
+    study_guide = models.ForeignKey(StudyGuide, on_delete=CASCADE)
+    formula_string = models.TextField()
+
+class FormulaTemplate(models.Model):
+    question = models.ForeignKey(FormulaQuestion, on_delete=CASCADE)
+    template_string = models.TextField()
