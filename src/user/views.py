@@ -39,3 +39,28 @@ def signup(request):
 
     elif request.method == 'GET':
         render(request, 'user/signup.html', {'form': SignupForm})
+
+def login(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+
+        if form.is_valid():
+            # Password has been checked
+            username = form.cleaned_data['username']
+
+            user = User.objects.get(username=username)
+
+            token_payload = {
+                'user_id': user.id,
+                'time_created': datetime.now().timestamp()
+            }
+
+            token = jwt.encode(token_payload, secret, algorithm='HS256')
+
+            response = HttpResponseRedirect('/study')
+            response.set_cookie('token', token, secure=True, httponly=True, samesite='Strict')
+
+            return response
+
+    elif request.method == 'GET':
+        render(request, 'user/signup.html', {'form': SignupForm})
