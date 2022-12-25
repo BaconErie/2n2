@@ -16,13 +16,9 @@ def signup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
 
-        if form.is_valid() and form.cleaned_data['password'] == form.cleaned_data['confirm_password']:
+        if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-
-            # Make sure username doesn't already exist
-            if User.objects.filter(username=username).count() != 0:
-                return HttpResponseBadRequest('Username already exists')
             
             hashed_password = make_password(password)
 
