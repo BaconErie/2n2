@@ -1,6 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator
+from django.contrib.auth.hashers import check_password
 
 from .models import User
 
@@ -28,3 +29,16 @@ class SignupForm(forms.Form):
 class LoginForm(forms.Form):
     username = forms.CharField(label='Username', max_length=20)
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
+
+    def clean(self):
+        cleaned_data = super().clean()
+        username = cleaned_data.get('username')
+        password = cleaned_data.get('password')
+
+        try:
+            user = User.objects.get(username=username)
+        except:
+            raise ValidationError('Username or password is incorrect. Please try again.')
+        
+        if password and not check_password(password, user.hashed_password):
+            raise ValidationError('Username or password is incorrect. Please try again.')
