@@ -17,9 +17,13 @@ from django.contrib import admin
 from django.urls import path, include
 import study.urls
 import user.urls
+import user.views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    
     path('study/', include(study.urls)),
-    path('user/', include(user.urls))
+
+    path('signup/', user.views.signup),
+    path('login/', user.views.login)
 ]
