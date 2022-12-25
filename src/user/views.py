@@ -5,9 +5,9 @@ from datetime import datetime, timezone
 import jwt
 import os
 
-from forms import SignupForm, LoginForm
+from .forms import SignupForm, LoginForm
 
-from models import User
+from .models import User
 
 secret = os.environ['secret']
 
