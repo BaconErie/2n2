@@ -36,9 +36,12 @@ def signup(request):
             response.set_cookie('token', token, secure=True, httponly=True, samesite='Strict')
 
             return response
+        
+        else:
+            return render(request, 'user/signup.html', {'form': form})
 
     elif request.method == 'GET':
-        render(request, 'user/signup.html', {'form': SignupForm})
+        return render(request, 'user/signup.html', {'form': SignupForm})
 
 def login(request):
     if request.method == 'POST':
@@ -61,6 +64,8 @@ def login(request):
             response.set_cookie('token', token, secure=True, httponly=True, samesite='Strict')
 
             return response
+        else:
+            return render(request, 'user/login.html', {'form': form})
 
     elif request.method == 'GET':
-        render(request, 'user/signup.html', {'form': LoginForm})
+        return render(request, 'user/login.html', {'form': LoginForm})

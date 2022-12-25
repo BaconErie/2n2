@@ -19,8 +19,8 @@ class SignupForm(forms.Form):
 
     def clean(self):
         cleaned_data = super().clean()
-        password = cleaned_data.get('subject')
-        confirm_password = cleaned_data.get('password')
+        password = cleaned_data.get('password')
+        confirm_password = cleaned_data.get('confirm_password')
 
         # Make sure password and confirm_password match
         if password and confirm_password and password != confirm_password:
