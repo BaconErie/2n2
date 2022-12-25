@@ -9,13 +9,10 @@
 
         <div id="message-box"></div>
 
-        <form action="/signup" method="post" onsubmit="return signup()">
+        <form action="/signup" method="post">
             {% crsf token %}
             {{ form }}
             <input type="submit" value="Sign Up">
         </form>
-                
-        {% load static %}
-        <script src="{% static 'user/signup.js' %}"></script>
     </body>
 </html>
