@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login - 2n2</title>
+    </head>
+
+    <body>
+        <h1>Login</h1>
+
+        <form action="/login" method="post">
+            {% crsf token %}
+            {{ form }}
+            <input type="submit" value="Log in">
+        </form>
+    </body>
+</html>
