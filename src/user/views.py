@@ -27,7 +27,7 @@ def signup(request):
             
             token_payload = {
                 'user_id': user.id,
-                'time_created': datetime.now().timestamp
+                'time_created': datetime.now().timestamp()
             }
 
             token = jwt.encode(token_payload, secret, algorithm='HS256')
