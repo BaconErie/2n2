@@ -63,4 +63,4 @@ def login(request):
             return response
 
     elif request.method == 'GET':
-        render(request, 'user/signup.html', {'form': SignupForm})
+        render(request, 'user/signup.html', {'form': LoginForm})
