@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sign up - 2n2</title>
+    </head>
+
+    <body>
+        <h1>Sign Up</h1>
+
+        <form action="/signup" method="post" onsubmit="return signup()">
+            {% crsf token %}
+            {{ form }}
+            <input type="submit" value="Sign Up">
+        </form>
+                
+        {% load static %}
+        <script src="{% static 'user/signup.src' %}"></script>
+    </body>
+</html>
